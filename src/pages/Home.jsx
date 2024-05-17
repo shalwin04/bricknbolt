@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Logo from '../images/Logo_Home.svg';
 import backgroundImage from '../images/chennaiPlain.webp';
 import AppointmentForm from './AppointmentForm'; // Import the AppointmentForm component
+import Services from './Services';
 
 const Home = () => {
   const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
@@ -110,6 +111,9 @@ const Home = () => {
           <AppointmentForm /> {/* Render the AppointmentForm component */}
         </div>
       </div>
+      <section>
+            <Services/>
+          </section>
     </div>
   );
 };

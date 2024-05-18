@@ -3,6 +3,7 @@ import Logo from '../images/Logo_Home.svg';
 import backgroundImage from '../images/chennaiPlain.webp';
 import AppointmentForm from './AppointmentForm'; // Import the AppointmentForm component
 import Services from './Services';
+import OurProjects from './OurProjects';
 
 const Home = () => {
   const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
@@ -113,7 +114,8 @@ const Home = () => {
       </div>
       <section>
             <Services/>
-          </section>
+      </section>
+      <OurProjects/>
     </div>
   );
 };

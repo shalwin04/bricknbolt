@@ -15,8 +15,10 @@ const Services = () => {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2 style={{ alignSelf: "flex-start" }}>Our Services</h2>
-      <p style={{ alignSelf: "flex-start" }}>
+      <h2 style={{ alignSelf: "flex-start", fontSize: "2rem", marginBottom: "0.5rem" }}>
+        Services We Offer
+      </h2>
+      <p style={{ alignSelf: "flex-start", fontSize: "1.2rem", marginBottom: "1rem" }}>
         Flawless construction powered by deep expertise.
       </p>
       <div
@@ -28,71 +30,94 @@ const Services = () => {
           width: "100%",
         }}
       >
-        <div
-          className="service-image-wrapper"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            margin: "1rem",
-            width: "45%",
-            border: "1px solid #ddd",
-            borderRadius: "8px",
-            overflow: "hidden",
-          }}
-        >
-          <img
-            src={houseconstruction}
-            style={{ width: "100%", display: "block" }}
-            alt="House Construction"
-          />
+        {[{
+          src: houseconstruction,
+          alt: 'Residentail Construction',
+          description: 'Residentail Construction',
+        }, {
+          src: commercial,
+          alt: 'Interior Design',
+          description: 'Interior Design',
+        }, {
+          src: houseconstruction,
+          alt: 'Architectural Design',
+          description: 'Architectural Design',
+        }, {
+          src: commercial,
+          alt: 'Commercial Construction',
+          description: 'Commercial Construction',
+        }].map((service, index) => (
           <div
-            className="service-description"
+            key={index}
+            className="service-image-wrapper"
             style={{
-              padding: "1rem",
-              textAlign: "center",
-              fontWeight: "bold",
-              backgroundColor: "#f8f8f8",
-              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              margin: "1rem 0.5rem",
+              width: "22%",
+              border: "1px solid #ddd",
+              overflow: "hidden",
+              backgroundColor: "#000", // Black background
+              color: "#fff", // White text
+              position: "relative",
+              borderBottom: "5px solid orange", // Add orange border
             }}
           >
-            House Construction
+            <div
+              className="image-container"
+              style={{
+                width: "100%",
+                height: "200px", 
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <img
+                src={service.src}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "block",
+                  transition: "transform 0.3s ease",
+                  objectFit: "cover",
+                }}
+                alt={service.alt}
+                className="service-image"
+              />
+            </div>
+            <div
+              className="service-description"
+              style={{
+                padding: "1rem",
+                textAlign: "center",
+                //fontWeight: "bold",
+                backgroundColor: "#000", 
+                color: "#fff", 
+                width: "100%",
+              }}
+            >
+              {service.description}
+            </div>
           </div>
-        </div>
-        <div
-          className="service-image-wrapper"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            margin: "1rem",
-            width: "45%",
-            border: "1px solid #ddd",
-            borderRadius: "8px",
-            overflow: "hidden",
-          }}
-        >
-          <img
-            src={commercial}
-            style={{ width: "100%", display: "block" }}
-            alt="Commercial Construction"
-          />
-          <div
-            className="service-description"
-            style={{
-              padding: "1rem",
-              textAlign: "center",
-              fontWeight: "bold",
-              backgroundColor: "#f8f8f8",
-              width: "100%",
-            }}
-          >
-            Construction for Business
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Services;
+// Adding the hover effect using CSS-in-JS
+const styles = `
+  .service-image-wrapper:hover .service-image {
+    transform: scale(1.1);
+  }
+`;
+
+const ServicesWithStyles = () => (
+  <>
+    <style>{styles}</style>
+    <Services />
+  </>
+);
+
+export default ServicesWithStyles;

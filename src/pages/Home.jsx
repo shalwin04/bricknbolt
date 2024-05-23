@@ -7,6 +7,7 @@ import Services from './Services';
 import WhyBricnBolt from './WhyBricknBolt';
 import OurProjects from './OurProjects';
 import { MdEmail } from 'react-icons/md';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Home = () => {
   const [locationDropdownOpen, setLocationDropdownOpen] = useState(false);
@@ -64,7 +65,7 @@ const Home = () => {
             {/* Dropdown - Location */}
             <div
               style={{ position: 'relative', fontSize: '14px' }}
-              onMouseEnter={toggleLocationDropdown}
+              onClick={toggleLocationDropdown}
               onMouseLeave={toggleLocationDropdown}
             >
               <button
@@ -91,7 +92,8 @@ const Home = () => {
                   ▼
                 </span>
               </button>
-              {locationDropdownOpen && (
+        
+             {locationDropdownOpen && (
                 <div style={{ position: 'absolute', top: '40px', left: '0', backgroundColor: '#fff', padding: '10px', borderRadius: '4px', zIndex: 1001 }}>
                   <p style={{ color: '#444', fontSize: '14px', margin: '0', cursor: 'pointer' }}>CHENNAI</p>
                   <p style={{ color: '#444', fontSize: '14px', margin: '0', cursor: 'pointer' }}>BANGALORE</p>
@@ -100,6 +102,7 @@ const Home = () => {
               )}
             </div>
           </div>
+         
 
           {/* Right Section */}
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -228,7 +231,8 @@ const Home = () => {
       )}
 
       {/* Image Background */}
-      <div style={{ position: 'relative', overflow: 'hidden', height: '400px', marginTop: '20px', padding: '20px' }}>
+    <Container style={{paddingTop: '3%', paddingBottom: '4%'}}>
+      <div style={{ position: 'relative', overflow: 'hidden', height: '500px', marginTop: '20px', padding: '40px' }}>
         <img src={backgroundImage} alt="Background" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
 
         {/* Appointment Form */}
@@ -293,8 +297,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </footer>
-    </div>
+      </footer>
+    </Container>
+  </div>
     
   );
 };

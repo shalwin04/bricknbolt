@@ -1,8 +1,10 @@
 import React from "react";
 import illustration from "../images/illustration-safemoney.svg";
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Whyus = () => {
   return (
+    <Container style={{paddingTop: '3%', paddingBottom: '3%'}}>
     <div
       className="services"
       style={{
@@ -134,6 +136,7 @@ const Whyus = () => {
         ))}
       </div>
     </div>
+  </Container>
   );
 };
 

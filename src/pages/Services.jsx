@@ -1,9 +1,11 @@
 import React from "react";
 import houseconstruction from "../images/img_houseconstruction.webp";
 import commercial from "../images/commercial_thumbnail.webp";
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Services = () => {
   return (
+    <Container style={{paddingTop: '3%', paddingBottom: '3%'}}>
     <div
       className="services"
       style={{
@@ -103,6 +105,7 @@ const Services = () => {
         ))}
       </div>
     </div>
+    </Container>
   );
 };
 

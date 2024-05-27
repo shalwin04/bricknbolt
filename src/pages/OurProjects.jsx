@@ -15,8 +15,8 @@ const OurProjects = () => {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2 style={{ alignSelf: "flex-start", marginBottom: "1rem" }}>Our Projects</h2>
-      <p style={{ alignSelf: "flex-start", marginBottom: "2rem" }}>
+      <h2 style={{ alignSelf: "flex-start", fontsize: "2rem", marginBottom: "0.5rem" }}>Our Projects</h2>
+      <p style={{ alignSelf: "flex-start", fontsize: "1.2rem", marginBottom: "1rem" }}>
         From a couple to a large Indian family, we have houses built with emotions for everyone.
       </p>
       <div style={{ width: "100%" }}>

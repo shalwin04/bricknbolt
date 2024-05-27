@@ -6,6 +6,7 @@ import AppointmentForm from './AppointmentForm';
 import Services from './Services';
 import WhyBricnBolt from './WhyBricknBolt';
 import OurProjects from './OurProjects';
+import HomeCarousel from './HomeCarousel';
 import { MdEmail } from 'react-icons/md';
 
 const Home = () => {
@@ -62,43 +63,103 @@ const Home = () => {
             </div>
 
             {/* Dropdown - Location */}
-            <div
-              style={{ position: 'relative', fontSize: '14px' }}
-              onMouseEnter={toggleLocationDropdown}
-              onMouseLeave={toggleLocationDropdown}
-            >
-              <button
+             <div
+      style={{ position: 'relative', fontSize: '14px' }}
+      onMouseEnter={toggleLocationDropdown}
+      onMouseLeave={toggleLocationDropdown}
+    >
+      <button
+        style={{
+          color: '#fff',
+          backgroundColor: '#FF5733', // Orange background
+          border: 'none',
+          cursor: 'pointer',
+          padding: '5px 10px',
+          fontSize: 'inherit',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+        type="button"
+        aria-expanded={locationDropdownOpen}
+      >
+        Location
+        <span
+          style={{
+            marginLeft: '10px',
+            transition: 'transform 0.3s',
+            transform: locationDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+          }}
+        >
+          ▼
+        </span>
+      </button>
+      {locationDropdownOpen && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            left: '0',
+            backgroundColor: '#fff',
+            padding: '10px',
+            borderRadius: '4px',
+            zIndex: 1001,
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          <ul style={{ listStyle: 'none', padding: '0', margin: '0' }}>
+            <li style={{ padding: '5px 0' }}>
+              <a
+                href="#"
                 style={{
-                  color: '#fff',
-                  backgroundColor: '#FF5733', // Orange background
-                  border: 'none',
-                  cursor: 'pointer',
+                  color: '#444',
+                  textDecoration: 'none',
+                  display: 'block',
                   padding: '5px 10px',
-                  fontSize: 'inherit',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
+                  transition: 'background-color 0.2s',
                 }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = '#f1f1f1')}
+                onMouseLeave={(e) => (e.target.style.backgroundColor = '#fff')}
               >
-                Location
-                <span
-                  style={{
-                    marginLeft: '10px',
-                    transition: 'transform 0.3s',
-                    transform: locationDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                  }}
-                >
-                  ▼
-                </span>
-              </button>
-              {locationDropdownOpen && (
-                <div style={{ position: 'absolute', top: '40px', left: '0', backgroundColor: '#fff', padding: '10px', borderRadius: '4px', zIndex: 1001 }}>
-                  <p style={{ color: '#444', fontSize: '14px', margin: '0', cursor: 'pointer' }}>CHENNAI</p>
-                  <p style={{ color: '#444', fontSize: '14px', margin: '0', cursor: 'pointer' }}>BANGALORE</p>
-                  <p style={{ color: '#444', fontSize: '14px', margin: '0', cursor: 'pointer' }}>MUMUBAI</p>
-                </div>
-              )}
-            </div>
+                CHENNAI
+              </a>
+            </li>
+            <li style={{ padding: '5px 0' }}>
+              <a
+                href="#"
+                style={{
+                  color: '#444',
+                  textDecoration: 'none',
+                  display: 'block',
+                  padding: '5px 10px',
+                  transition: 'background-color 0.2s',
+                }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = '#f1f1f1')}
+                onMouseLeave={(e) => (e.target.style.backgroundColor = '#fff')}
+              >
+                BANGALORE
+              </a>
+            </li>
+            <li style={{ padding: '5px 0' }}>
+              <a
+                href="#"
+                style={{
+                  color: '#444',
+                  textDecoration: 'none',
+                  display: 'block',
+                  padding: '5px 10px',
+                  transition: 'background-color 0.2s',
+                }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = '#f1f1f1')}
+                onMouseLeave={(e) => (e.target.style.backgroundColor = '#fff')}
+              >
+                MUMBAI
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
           </div>
 
           {/* Right Section */}
@@ -228,10 +289,10 @@ const Home = () => {
       )}
 
       {/* Image Background */}
-      <div style={{ position: 'relative', overflow: 'hidden', height: '400px', marginTop: '20px', padding: '20px' }}>
+      {/* <div style={{ position: 'relative', overflow: 'hidden', height: '400px', marginTop: '20px', padding: '20px' }}>
         <img src={backgroundImage} alt="Background" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
 
-        {/* Appointment Form */}
+        { Appointment Form }
         <div style={{ 
           position: 'absolute',
           top: '50%',
@@ -245,9 +306,10 @@ const Home = () => {
           padding: '20px',
           zIndex: 1 // Ensure form appears in front of the image
         }}>
-          <AppointmentForm /> {/* Render the AppointmentForm component */}
+          <AppointmentForm /> { Render the AppointmentForm component }
         </div>
-      </div>
+      </div> */}
+      <HomeCarousel/>
       <section>
         <Services/>
       </section>
@@ -268,7 +330,7 @@ const Home = () => {
               href="mailto:info@gofilings.com"
               style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center', marginRight: '10px' }}
             >
-              <MdEmail className="mr-1" />
+              {/* <MdEmail className="mr-1" /> */}
               info@deejos.com
             </a>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import carouselimage1 from '../images/homecarousel-img-1.webp';
@@ -47,13 +47,74 @@ const HomeCarousel = () => {
     },
   };
 
+  const carouselItemStyle = {
+    position: 'relative',
+    textAlign: 'center',
+    color: '#fff',
+  };
+
+  const carouselImageStyle = {
+    width: '100%',
+    height: '500px',
+    objectFit: 'cover',
+  };
+
+  const carouselDescriptionStyle = {
+    position: 'absolute',
+    bottom: '20px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    textAlign: 'center',
+    width: '80%',
+  };
+
+  const paragraphStyle = {
+    fontSize: '3rem',  // Increase font size
+    fontWeight: 'bold',
+    color: '#fff',
+    fontFamily: 'Helvetica, Arial, sans-serif',  // Set font to Helvetica
+  };
+
+  const [typedText, setTypedText] = useState('');
+  const [typingIndex, setTypingIndex] = useState(0);
+  const [autoPlaySpeed, setAutoPlaySpeed] = useState(7000);  // Initial autoPlay speed
+
+  const typingSpeed = 100;  // Typing speed in milliseconds
+  const pauseTime = 2000;  // Pause time after typing in milliseconds
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    let typingTimeout;
+    if (typingIndex < carouselItems.length) {
+      const currentText = carouselItems[typingIndex].description;
+      const typeWriter = (text, i = 0) => {
+        if (i < text.length) {
+          setTypedText((prev) => prev + text.charAt(i));
+          typingTimeout = setTimeout(() => typeWriter(text, i + 1), typingSpeed);
+        } else {
+          setTimeout(() => {
+            setTypedText('');
+            setTypingIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
+          }, pauseTime);  // Pause before clearing and starting next description
+        }
+      };
+      typeWriter(currentText);
+    }
+
+    // Calculate the total time needed for typing and pause
+    const totalAutoPlaySpeed = carouselItems[typingIndex].description.length * typingSpeed + pauseTime;
+    setAutoPlaySpeed(totalAutoPlaySpeed);
+
+    return () => clearTimeout(typingTimeout);
+  }, [typingIndex]);
+
   return (
     <Carousel
       responsive={responsive}
       showDots={true}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={3000}
+      autoPlaySpeed={autoPlaySpeed} // Set dynamically based on typing speed and pause time
       keyBoardControl={true}
       customTransition="all .5"
       transitionDuration={500}
@@ -63,10 +124,10 @@ const HomeCarousel = () => {
       itemClass="carousel-item-padding-40-px"
     >
       {carouselItems.map((item, index) => (
-        <div key={index} style={{ position: 'relative', textAlign: 'center', color: '#fff' }}>
-          <img src={item.image} alt={`Carousel item ${index}`} style={{ width: '100%', height: '500px', objectFit: 'cover' }} />
-          <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)', backgroundColor: 'rgba(0, 0, 0, 0)', padding: '10px 20px', borderRadius: '10px', textAlign: 'center', width: '80%', animation: 'slideUp 0.5s ease-out' }}>
-            <p style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{item.description}</p>
+        <div key={index} style={carouselItemStyle}>
+          <img src={item.image} alt={`Carousel item ${index}`} style={carouselImageStyle} />
+          <div style={carouselDescriptionStyle}>
+            {typingIndex === index && <p style={paragraphStyle}>{typedText}</p>}
           </div>
         </div>
       ))}

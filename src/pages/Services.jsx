@@ -9,18 +9,48 @@ const Services = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
+        alignItems: "center",
         margin: "2rem auto",
         width: "80%",
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2 style={{ alignSelf: "flex-start", fontSize: "2rem", marginBottom: "0.5rem" }}>
-        Services We Offer
-      </h2>
-      <p style={{ alignSelf: "flex-start", fontSize: "1.2rem", marginBottom: "1rem" }}>
-        Flawless construction powered by deep expertise.
-      </p>
+      <div
+        className="header"
+        style={{
+          textAlign: "center",
+          marginBottom: "2rem",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "2.5rem",
+            marginBottom: "0.5rem",
+            color: "#333",
+            fontWeight: "bold",
+          }}
+        >
+          Services We Offer
+        </h2>
+        <p
+          style={{
+            fontSize: "1.2rem",
+            marginBottom: "1rem",
+            color: "#555",
+          }}
+        >
+          Flawless construction powered by deep expertise.
+        </p>
+        <hr
+          style={{
+            width: "50%",
+            border: "none",
+            height: "2px",
+            backgroundColor: "orange",
+            margin: "0 auto",
+          }}
+        />
+      </div>
       <div
         className="service-container"
         style={{
@@ -30,23 +60,28 @@ const Services = () => {
           width: "100%",
         }}
       >
-        {[{
-          src: houseconstruction,
-          alt: 'Residentail Construction',
-          description: 'Residentail Construction',
-        }, {
-          src: commercial,
-          alt: 'Interior Design',
-          description: 'Interior Design',
-        }, {
-          src: houseconstruction,
-          alt: 'Architectural Design',
-          description: 'Architectural Design',
-        }, {
-          src: commercial,
-          alt: 'Commercial Construction',
-          description: 'Commercial Construction',
-        }].map((service, index) => (
+        {[
+          {
+            src: houseconstruction,
+            alt: "Residential Construction",
+            description: "Residential Construction",
+          },
+          {
+            src: commercial,
+            alt: "Interior Design",
+            description: "Interior Design",
+          },
+          {
+            src: houseconstruction,
+            alt: "Architectural Design",
+            description: "Architectural Design",
+          },
+          {
+            src: commercial,
+            alt: "Commercial Construction",
+            description: "Commercial Construction",
+          },
+        ].map((service, index) => (
           <div
             key={index}
             className="service-image-wrapper"
@@ -68,7 +103,7 @@ const Services = () => {
               className="image-container"
               style={{
                 width: "100%",
-                height: "200px", 
+                height: "200px",
                 overflow: "hidden",
                 position: "relative",
               }}
@@ -91,9 +126,8 @@ const Services = () => {
               style={{
                 padding: "1rem",
                 textAlign: "center",
-                //fontWeight: "bold",
-                backgroundColor: "#000", 
-                color: "#fff", 
+                backgroundColor: "#000",
+                color: "#fff",
                 width: "100%",
               }}
             >

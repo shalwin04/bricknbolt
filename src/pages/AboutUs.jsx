@@ -1,4 +1,3 @@
-// src/AboutUs.js
 import React from 'react';
 
 const AboutUs = () => {
@@ -28,13 +27,15 @@ const AboutUs = () => {
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         }}
       >
+        {/* "15 Years Experience" block */}
         <div
           className="experience"
           style={{
             flex: '1',
-            textAlign: 'center',
+            textAlign: 'left',
             borderRight: '1px solid #ddd',
             padding: '20px',
+            boxSizing: 'border-box',
           }}
         >
           <h2
@@ -43,7 +44,6 @@ const AboutUs = () => {
               color: 'orange',
               margin: '0',
               textTransform: 'uppercase',
-              textAlign: 'center'
             }}
           >
             15
@@ -54,7 +54,6 @@ const AboutUs = () => {
               color: 'orange',
               margin: '0',
               textTransform: 'uppercase',
-              textAlign: 'center'
             }}
           >
             Years
@@ -65,7 +64,6 @@ const AboutUs = () => {
               color: '#333',
               margin: '0',
               textTransform: 'uppercase',
-              textAlign: 'center'
             }}
           >
             Experience
@@ -75,7 +73,7 @@ const AboutUs = () => {
           className="welcome"
           style={{
             flex: '2',
-            textAlign: 'center',
+            textAlign: 'left',
             borderRight: '1px solid #ddd',
             padding: '20px',
           }}
@@ -85,7 +83,6 @@ const AboutUs = () => {
               fontSize: '1.5rem',
               color: 'orange',
               textTransform: 'uppercase',
-              textAlign: 'left',
               marginBottom: '0.5rem',
             }}
           >
@@ -96,7 +93,6 @@ const AboutUs = () => {
               fontSize: '2.5rem',
               color: '#777',
               textTransform: 'uppercase',
-              textAlign: 'left',
               margin: '0',
             }}
           >
@@ -107,7 +103,6 @@ const AboutUs = () => {
               fontSize: '2.5rem',
               color: '#333',
               textTransform: 'uppercase',
-              textAlign: 'left',
               margin: '0',
             }}
           >

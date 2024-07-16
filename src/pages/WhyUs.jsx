@@ -1,7 +1,154 @@
-import React from "react";
-import illustration from '../images/illustration-safemoney.svg'
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import illustration from "../images/illustration-safemoney.svg";
 
 const WhyUs = () => {
+  // Function to calculate the width of the text dynamically
+  const calculateLineWidth = (text) => {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    context.font = "1.2rem Arial, sans-serif"; // Match the font and size of your text
+    return context.measureText(text).width + "px";
+  };
+
+  // Text for the line width calculation
+  const lineText =
+    "Providing reliable solutions in Construction & Architecture.";
+  const lineWidth = calculateLineWidth(lineText);
+
+  // Array of reasons with icons split into two columns
+  const reasonsLeft = [
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "ONE-STOP SOLUTION.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "HIGH TRANSPARENCY THROUGHOUT THE PROCESS.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "ON-TIME PROJECT DELIVERY GUARANTEED.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "DEDICATED SITE TEAM FOR PERSONALIZED SERVICE.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "DECPOL APP FOR ENHANCED COMMUNICATION.",
+    },
+  ];
+
+  const reasonsRight = [
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "15 YEARS IN CONSTRUCTION & ARCHITECTURE.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "CORE ARCHITECTURE SERVICES AVAILABLE.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "475+ QUALITY CHECKS IMPLEMENTED.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "TECH-DRIVEN PROJECT MANAGEMENT APPROACH.",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ color: "green", fontSize: "2rem", marginRight: "10px" }}
+        />
+      ),
+      text: "PRICE MATCH GUARANTEE FOR COMPETITIVE PRICING.",
+    },
+  ];
+
+  // Card component for each reason
+  const ReasonCard = ({ icon, text }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+
+    return (
+      <div
+        className="reason-card"
+        style={{
+          backgroundColor: "#f0f0f0",
+          padding: "20px",
+          borderRadius: "8px",
+          marginBottom: "1rem",
+          display: "flex",
+          alignItems: "center",
+          transition: "transform 0.2s ease",
+          transform: isHovered ? "scale(1.05)" : "scale(1)",
+          cursor: "pointer",
+        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div style={{ marginRight: "15px" }}>{icon}</div>
+        <p style={{ fontSize: "1.2rem", color: "#333", margin: "0" }}>{text}</p>
+      </div>
+    );
+  };
+
   return (
     <div
       className="whyus"
@@ -17,7 +164,10 @@ const WhyUs = () => {
       <div
         className="header"
         style={{
-          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
           marginBottom: "2rem",
         }}
       >
@@ -27,6 +177,7 @@ const WhyUs = () => {
             marginBottom: "0.5rem",
             color: "#333",
             fontWeight: "bold",
+            textAlign: "center",
           }}
         >
           Why Us?
@@ -34,133 +185,42 @@ const WhyUs = () => {
         <p
           style={{
             fontSize: "1.2rem",
-            marginBottom: "1rem",
             color: "#555",
+            marginBottom: "1rem",
+            textAlign: "center",
           }}
         >
-          We ensure peace of mind, trust, and transparent services.
+          {lineText}
         </p>
         <hr
           style={{
-            width: "50%",
-            border: "none",
-            height: "2px",
-            backgroundColor: "orange",
-            margin: "0 auto",
+            width: lineWidth,
+            borderTop: "2px solid orange",
+            margin: "0",
+            marginBottom: "1rem",
           }}
         />
       </div>
+
+      {/* Reasons for choosing us */}
       <div
-        className="service-container"
+        className="reasons"
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
           width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
         }}
       >
-        {[{
-          src: illustration,
-          alt: 'One Stop Solution',
-          description: 'One Stop Solution',
-        }, {
-          src: illustration,
-          alt: '15 years in Construction & Architecture',
-          description: '15 years in Construction & Architecture',
-        }, {
-          src: illustration,
-          alt: 'One Stop Solution',
-          description: 'One Stop Solution',
-        }, {
-          src: illustration,
-          alt: '15 years in Construction & Architecture',
-          description: '15 years in Construction & Architecture',
-        }].map((service, index) => (
-          <div
-            key={index}
-            className="service-card"
-            style={{
-              perspective: "1000px",
-              margin: "1rem 0.5rem",
-              width: "22%",
-              height: "300px",
-              position: "relative",
-            }}
-          >
-            <div
-              className="service-card-inner"
-              style={{
-                position: "relative",
-                width: "100%",
-                height: "100%",
-                textAlign: "center",
-                transition: "transform 0.8s",
-                transformStyle: "preserve-3d",
-                border: "1px solid #ddd",
-                borderBottom: "5px solid orange",
-                backgroundColor: "#000",
-                color: "#fff",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "rotateY(180deg)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "rotateY(0deg)";
-              }}
-            >
-              <div
-                className="service-card-front"
-                style={{
-                  position: "absolute",
-                  width: "100%",
-                  height: "100%",
-                  backfaceVisibility: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <img
-                  src={service.src}
-                  alt={service.alt}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                  }}
-                />
-                <div
-                  style={{
-                    padding: "1rem",
-                    width: "100%",
-                  }}
-                >
-                  {service.description}
-                </div>
-              </div>
-              <div
-                className="service-card-back"
-                style={{
-                  position: "absolute",
-                  width: "100%",
-                  height: "100%",
-                  backfaceVisibility: "hidden",
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  transform: "rotateY(180deg)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "1rem",
-                }}
-              >
-                <h3>{service.description}</h3>
-                <p>Detailed description about {service.description}.</p>
-              </div>
-            </div>
-          </div>
-        ))}
+        <div style={{ flex: "1", marginRight: "1rem" }}>
+          {reasonsLeft.map((reason, index) => (
+            <ReasonCard key={index} icon={reason.icon} text={reason.text} />
+          ))}
+        </div>
+        <div style={{ flex: "1", marginLeft: "1rem" }}>
+          {reasonsRight.map((reason, index) => (
+            <ReasonCard key={index} icon={reason.icon} text={reason.text} />
+          ))}
+        </div>
       </div>
     </div>
   );
